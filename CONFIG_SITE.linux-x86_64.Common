@@ -1,0 +1,20 @@
+# The following definitions must be changed for each site
+
+#     - To build the IOC applications set BUILD_IOCS to YES
+#       Otherwise set it to NO
+BUILD_IOCS=NO
+
+#     - To include GraphicsMagick support set the following to YES
+#     - To not use it comment out the line or set it to NO
+#     - GraphicsMagick is required for NDFileMagick and the URL driver.
+USE_GRAPHICSMAGICK=NO
+
+CROSS_COMPILER_TARGET_ARCHS =
+
+# Definitions required for compiling the unit tests
+BOOST_LIB       = /usr/lib
+BOOST_INCLUDE   = -I/usr/include
+
+SSH             = /usr
+SSH_LIB         = /usr/lib/x86_64-linux-gnu
+SSH_INCLUDE     = -I/usr/include
