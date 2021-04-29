@@ -23,7 +23,7 @@ RUN ./add_module.sh epics-modules motor MOTOR ${MOTOR_VERSION}
 RUN ./add_module.sh dls-controls pmac PMAC ${PMAC_VERSION}
 
 # patch for distro
-COPY --chown=1000 CONFIG_SITE.linux-x86_64.Common ${SUPPORT}/pmac-${PMAC_VERSION}/configure
+COPY --chown=${USER_UID}:${USER_GID} CONFIG_SITE.linux-x86_64.Common ${SUPPORT}/pmac-${PMAC_VERSION}/configure
 RUN cp ${SUPPORT}/motor-${MOTOR_VERSION}/motorApp/Db/basic_asyn_motor.db ${SUPPORT}/motor-${MOTOR_VERSION}/motorApp/Db/basic_asyn_motor.template
 
 # update dependencies and build
@@ -33,7 +33,7 @@ RUN make release && \
     make clean
 
 # update the generic IOC Makefile
-COPY --chown=1000 Makefile ${SUPPORT}/ioc/iocApp/src
+COPY --chown=${USER_UID}:${USER_GID} Makefile ${SUPPORT}/ioc/iocApp/src
 
 # update dependencies and build (separate step for efficient image layers)
 RUN make release && \
