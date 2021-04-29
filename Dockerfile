@@ -1,7 +1,7 @@
 
 # EPICS delta tau pmac Dockerfile
 ARG REGISTRY=gcr.io/diamond-privreg/controls/prod
-ARG SYNAPPS_VERSION=6.2b1.1
+ARG SYNAPPS_VERSION=6.2b1.2
 
 FROM ${REGISTRY}/epics/epics-synapps:${SYNAPPS_VERSION}
 
