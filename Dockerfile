@@ -1,6 +1,6 @@
 # EPICS pmac Dockerfile. Adds support for delta tau turbo pmac 2 and power
 ARG REGISTRY=gcr.io/diamond-pubreg/controls/prod
-ARG MODULES_VERSION=1.0
+ARG MODULES_VERSION=1.0.5
 
 FROM ${REGISTRY}/epics/epics-modules:${MODULES_VERSION}
 
