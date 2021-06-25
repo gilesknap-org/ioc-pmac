@@ -1,6 +1,6 @@
 # Add support for delta tau turbo pmac 2 and power pmac
 ARG REGISTRY=ghcr.io/epics-containers
-ARG MODULES_VERSION=4.41r1.0
+ARG MODULES_VERSION=4.41r2.0
 
 FROM ${REGISTRY}/epics-modules:${MODULES_VERSION}
 
@@ -10,7 +10,8 @@ USER root
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
     libssh2-1-dev \
-    libboost-dev
+    libboost-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 USER ${USERNAME}
 
@@ -32,6 +33,8 @@ COPY --chown=${USER_UID}:${USER_GID} Makefile ${EPICS_ROOT}/ioc/iocApp/src
 
 # update dependencies and build the support modules and the ioc
 RUN python3 module.py dependencies && \
-    make  && \
-    make clean
+    make -j -C  ${SUPPORT}/motor-${MOTOR_VERSION} && \
+    make -C  ${SUPPORT}/pmac-${PMAC_VERSION} && \
+    make -j -C  ${EPICS_ROOT}/ioc && \
+    make -j clean
 
