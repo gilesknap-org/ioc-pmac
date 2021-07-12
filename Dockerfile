@@ -51,6 +51,8 @@ ARG MOTOR_VERSION
 ARG PMAC_VERSION
 ARG IPAC_VERSION
 
+USER ${USERNAME}
+
 # get the products from the build stage
 COPY --from=developer --chown=${USER_UID}:${USER_GID} ${SUPPORT}/motor-${MOTOR_VERSION} ${SUPPORT}/motor-${MOTOR_VERSION}
 COPY --from=developer --chown=${USER_UID}:${USER_GID} ${SUPPORT}/pmac-${PMAC_VERSION} ${SUPPORT}/pmac-${PMAC_VERSION}
