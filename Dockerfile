@@ -1,13 +1,11 @@
 # Add support for delta tau turbo pmac 2 and power pmac
-ARG REGISTRY=ghcr.io/epics-containers
-ARG MODULES_VERSION=4.41r3.0
-
 ARG MOTOR_VERSION=R7-2-1
 ARG PMAC_VERSION=2-5-3
 ARG IPAC_VERSION=2.16
+
 ##### build stage ##############################################################
 
-FROM ${REGISTRY}/epics-modules:${MODULES_VERSION} AS developer
+FROM ghcr.io/epics-containers/epics-modules:4.41r3.0 AS developer
 
 ARG MOTOR_VERSION
 ARG PMAC_VERSION
@@ -45,7 +43,7 @@ RUN python3 module.py dependencies && \
 
 ##### runtime stage #############################################################
 
-FROM ${REGISTRY}/epics-modules:${MODULES_VERSION}.run AS runtime
+FROM ghcr.io/epics-containers/epics-modules:4.41r3.0.run AS runtime
 
 ARG MOTOR_VERSION
 ARG PMAC_VERSION
