@@ -5,7 +5,7 @@ ARG IPAC_VERSION=2.16
 
 ##### build stage ##############################################################
 
-FROM ghcr.io/epics-containers/epics-modules:4.41r3.0 AS developer
+FROM ghcr.io/epics-containers/epics-modules:4.41.r3.2 AS developer
 
 ARG MOTOR_VERSION
 ARG PMAC_VERSION
@@ -43,7 +43,7 @@ RUN python3 module.py dependencies && \
 
 ##### runtime stage #############################################################
 
-FROM ghcr.io/epics-containers/epics-modules:4.41r3.0.run AS runtime
+FROM ghcr.io/epics-containers/epics-modules:4.41.r3.2 AS runtime
 
 ARG MOTOR_VERSION
 ARG PMAC_VERSION
